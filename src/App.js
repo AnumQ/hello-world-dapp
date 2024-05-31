@@ -41,12 +41,6 @@ function App() {
     if (web3) {
       // Requst account access
       try {
-        // https://docs.metamask.io/wallet/reference/eth_accounts/
-        // const accounts = await window.ethereum.request({
-        //   method: "eth_requestAccounts",
-        //   params: [],
-        // });
-        //This method will request/enable the accounts from the current environment it is running (Metamask, Status or Mist).
         const accounts = await web3.eth.requestAccounts();
         setAccounts(accounts);
 
@@ -105,23 +99,7 @@ function App() {
     // Get accounts from MetaMask
     const accounts = await web3.eth.getAccounts();
     console.log("Deploying from account:", accounts[0]);
-    var myContract = new web3.eth.Contract([
-      { inputs: [], stateMutability: "nonpayable", type: "constructor" },
-      {
-        inputs: [],
-        name: "getGreeting",
-        outputs: [{ internalType: "string", name: "", type: "string" }],
-        stateMutability: "view",
-        type: "function",
-      },
-      {
-        inputs: [{ internalType: "string", name: "_greeting", type: "string" }],
-        name: "setGreeting",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-      },
-    ]);
+    var myContract = new web3.eth.Contract(ABI);
 
     // Create the contract deployer
     const deployer = myContract.deploy({
