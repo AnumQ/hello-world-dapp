@@ -1,6 +1,6 @@
-# web3-connect-metamask
+# Hello World Dapp
 
-A react app which integrates web3.js and allows connects to MetaMask wallet to interact with the blockchain.
+A react app which interacts with the blockchain using web3.js 
 
 
 
